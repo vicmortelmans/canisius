@@ -1,0 +1,3 @@
+[submodule "BibleConfiguration"]
+	path = BibleConfiguration
+	url = git@github.com:vicmortelmans/BibleConfiguration.git

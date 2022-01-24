@@ -1,0 +1,14 @@
+<project name="canisius" default="html" basedir=".">
+  <target name="html-per-book">
+    <xslt in="canisius.xml" style="canisius-to-html-per-book.xslt" out="log.xml"/>
+  </target>
+  <target name="html">
+    <xslt in="canisius.xml" style="canisius-to-html.xslt" out="output-html/index.html"/>
+  </target>
+  <target name="xml-per-chapter">
+    <xslt in="canisius.xml" style="canisius-to-xml-per-chapter.xslt" out="log.xml"/>
+  </target>
+  <target name="outline">
+    <xslt in="canisius.xml" style="canisius-to-outline.xslt" out="output-outline/outline.xml"/>
+  </target>
+</project>
