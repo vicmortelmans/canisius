@@ -3,10 +3,12 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" indent="yes"/>
 
+  <xsl:param name="dir" select="."/>
+
   <xsl:variable name="books" select="document('BibleConfiguration/books.xml')/books"/>
   
   <xsl:template match="/">
-    <xsl:result-document href="output-html-per-book/index.html" method="html">
+    <xsl:result-document href="{$dir}/index.html" method="html">
       <html>
         <head>
           <title>De Bijbel - Petrus Canisiusvertaling</title>
@@ -82,6 +84,7 @@
               <xsl:text> </xsl:text>
             </xsl:for-each-group>
           </p>
+          <div><p><a href="canisius.html">De hele Bijbel op één webpagina</a></p></div>
         </body>
       </html>
     </xsl:result-document>
@@ -90,7 +93,7 @@
       <xsl:sort select="number(Book_x0020_ID)"/>
       <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
       <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
-      <xsl:result-document href="output-html-per-book/{$book}.html" method="html">
+      <xsl:result-document href="{$dir}/{$book}.html" method="html">
         <html>
           <head>
             <title>De Bijbel - Petrus Canisiusvertaling</title>
