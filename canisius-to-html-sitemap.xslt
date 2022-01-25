@@ -11,7 +11,7 @@
       <url><loc><xsl:value-of select="$dom"/>/index.html</loc></url>
       <xsl:for-each-group select="dataroot/Bible" group-by="Book_x0020_ID">
         <xsl:sort select="number(Book_x0020_ID)"/>
-        <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
+        <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
         <url><loc><xsl:value-of select="$dom"/>/<xsl:value-of select="$book"/>.html</loc></url>
       </xsl:for-each-group>
     </urlset>

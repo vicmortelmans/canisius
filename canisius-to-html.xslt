@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="2.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="html" indent="yes"/>
+  <xsl:output method="html" version="5.0" encoding="UTF-8" indent="yes"/>
 
   <xsl:variable name="books" select="document('BibleConfiguration/books.xml')/books"/>
   
@@ -30,6 +30,15 @@
             page-break-before: always;
           }
         </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-336L5CJ1CM"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-336L5CJ1CM');
+        </script>
       </head>
       <body>
         <div>
@@ -43,7 +52,7 @@
         <p>
           <xsl:for-each-group select="dataroot/Bible[number(Book_x0020_ID) &lt; 40]" group-by="Book_x0020_ID">
             <xsl:sort select="number(Book_x0020_ID)"/>
-            <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
+            <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
             <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
             <a href="#{$book}">
               <xsl:text>[</xsl:text>
@@ -57,7 +66,7 @@
         <p>
           <xsl:for-each-group select="dataroot/Bible[number(Book_x0020_ID) &gt; 66]" group-by="Book_x0020_ID">
             <xsl:sort select="number(Book_x0020_ID)"/>
-            <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
+            <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
             <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
             <a href="#{$book}">
               <xsl:text>[</xsl:text>
@@ -71,7 +80,7 @@
         <p>
           <xsl:for-each-group select="dataroot/Bible[number(Book_x0020_ID) &gt; 39 and number(Book_x0020_ID) &lt; 67]" group-by="Book_x0020_ID">
             <xsl:sort select="number(Book_x0020_ID)"/>
-            <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
+            <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
             <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
             <a href="#{$book}">
               <xsl:text>[</xsl:text>
@@ -84,7 +93,7 @@
         <!-- Books -->
         <xsl:for-each-group select="dataroot/Bible" group-by="Book_x0020_ID">
           <xsl:sort select="number(Book_x0020_ID)"/>
-          <xsl:variable name="book" select="$books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')]"/>
+          <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
           <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
           <!-- Book title -->
           <h1 id="{$book}" class="page">

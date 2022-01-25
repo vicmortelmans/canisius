@@ -19,4 +19,9 @@
   <target name="outline">
     <xslt in="canisius.xml" style="canisius-to-outline.xslt" out="output-outline/outline.xml"/>
   </target>
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="output-*/*"/>
+    </delete>
+  </target>
 </project>
