@@ -1,0 +1,10 @@
+#!/bin/bash
+ant
+cd output-html
+lftp -u $BIJBEL_USER,$BIJBEL_PASSWORD @$BIJBEL_SERVER << EOF
+set ssl:check-hostname no
+set ftp:use-mdtm off
+mirror -R -n --use-cache --parallel=4 --ignore-time --verbose
+bye
+EOF
+
