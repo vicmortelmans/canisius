@@ -12,31 +12,23 @@
       <html>
         <head>
           <title>De Bijbel - Petrus Canisiusvertaling</title>
-          <style>
-            p.chapter {
-              border: solid 1pt #ccc;
-              background-color: #eee;
-              padding: 8pt;
-            }
-            div {
-              text-align: center;
-            }
-            .title {
-              font-size: 28pt;
-              font-weight: bold;
-            }
-            sup {
-              color: #900;
-              font-weight: bold;
-            }
-            .page {
-              page-break-before: always;
-            }
-          </style>
+          <meta charset="utf-8"></meta>
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
+          <meta name="description" content="Katholieke Bijbelvertaling"></meta>
+          <link rel="stylesheet" type="text/css" href="style.css"/>
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-336L5CJ1CM"></script>
+          <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-336L5CJ1CM');
+          </script>
         </head>
         <body>
           <div>
-            <p class="title">De Bijbel<br/>Vertaling Petrus Canisius</p>
+            <p class="title">Katholieke Bijbelvertaling<br/>Petrus Canisius</p>
             <p>De Heilige Schrift, vertaling uit de grondtekst in opdracht van de Apologetische Vereniging 'Petrus Canisius' ondernomen met goedkeuring van de hoogwaardige bisschoppen van Nederland</p>
             <p>Oorspronkelijke uitgave 1939</p>
             <p><a href="http://www.gelovenleren.net">gelovenleren.net</a></p>
@@ -49,9 +41,7 @@
               <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
               <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
               <a href="{$book}.html">
-                <xsl:text>[</xsl:text>
                 <xsl:value-of select="$book-long"/>
-                <xsl:text>]</xsl:text>
               </a>
               <xsl:text> </xsl:text>
             </xsl:for-each-group>
@@ -63,9 +53,7 @@
               <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
               <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
               <a href="{$book}.html">
-                <xsl:text>[</xsl:text>
                 <xsl:value-of select="$book-long"/>
-                <xsl:text>]</xsl:text>
               </a>
               <xsl:text> </xsl:text>
             </xsl:for-each-group>
@@ -77,9 +65,7 @@
               <xsl:variable name="book" select="replace($books/book[code[@service='can']=current-grouping-key()]/input[contains(@language,'nl')],' ','-')"/>
               <xsl:variable name="book-long" select="$books/book[code[@service='can']=current-grouping-key()]/input[1]"/>
               <a href="{$book}.html">
-                <xsl:text>[</xsl:text>
                 <xsl:value-of select="$book-long"/>
-                <xsl:text>]</xsl:text>
               </a>
               <xsl:text> </xsl:text>
             </xsl:for-each-group>
@@ -97,27 +83,10 @@
         <html>
           <head>
             <title>De Bijbel - Petrus Canisiusvertaling</title>
-            <style>
-              p.chapter {
-                border: solid 1pt #ccc;
-                background-color: #eee;
-                padding: 8pt;
-              }
-              div {
-                text-align: center;
-              }
-              .title {
-                font-size: 28pt;
-                font-weight: bold;
-              }
-              sup {
-                color: #900;
-                font-weight: bold;
-              }
-              .page {
-                page-break-before: always;
-              }
-            </style>
+            <meta charset="utf-8"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
+            <meta name="description" content="Katholieke Bijbelvertaling"></meta>
+            <link rel="stylesheet" type="text/css" href="style.css"/>
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-336L5CJ1CM"></script>
             <script>
@@ -130,7 +99,7 @@
           </head>
           <body>
             <div>
-              <p class="title">De Bijbel<br/>Vertaling Petrus Canisius</p>
+              <p class="title">Katholieke Bijbelvertaling<br/>Petrus Canisius</p>
               <p>De Heilige Schrift, vertaling uit de grondtekst in opdracht van de Apologetische Vereniging 'Petrus Canisius' ondernomen met goedkeuring van de hoogwaardige bisschoppen van Nederland</p>
               <p>Oorspronkelijke uitgave 1939</p>
               <p><a href="http://www.gelovenleren.net">gelovenleren.net</a></p>
@@ -141,15 +110,16 @@
             </h1>
             <!-- TOC with list of chapters -->
             <p class="chapter">
-              <a href="index.html">INHOUD</a>
-              <xsl:text> | hoofdstuk: 1 </xsl:text>
+              <a href="index.html">BIJBEL</a>
+              <xsl:text> hoofdstuk: </xsl:text>
+              <a href="#{$book}">
+                <xsl:text>1</xsl:text>
+              </a>
               <xsl:for-each-group select="current-group()" group-by="Chapter">
                 <xsl:sort select="number(Chapter)"/>
                 <xsl:if test="number(current-grouping-key()) &gt; 1">
                   <a href="#{$book}-{current-grouping-key()}">
-                    <xsl:text>[</xsl:text>
                     <xsl:value-of select="current-grouping-key()"/>
-                    <xsl:text>]</xsl:text>
                   </a>
                   <xsl:text> </xsl:text>
                 </xsl:if>
@@ -160,12 +130,10 @@
               <xsl:sort select="number(Chapter)"/>
               <xsl:if test="number(current-grouping-key()) &gt; 1">
                 <p class="chapter page" id="{$book}-{current-grouping-key()}">
-                  <a href="index.html">INHOUD</a>
-                  <xsl:text> | </xsl:text>
+                  <a href="index.html">BIJBEL</a>
+                  <xsl:text> </xsl:text>
                   <a href="#{$book}">
-                    <xsl:text>[</xsl:text>
                     <xsl:value-of select="$book-long"/>
-                    <xsl:text>]</xsl:text>
                   </a>
                 </p>
               </xsl:if>

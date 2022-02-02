@@ -1,14 +1,17 @@
 <project name="canisius" default="html-per-book" basedir=".">
-  <target name="html-per-book" depends="html, html-sitemap">
+  <target name="html-per-book" depends="html, html-sitemap, style">
     <xslt in="canisius.xml" style="canisius-to-html-per-book.xslt" out="log.xml">
       <param name="dir" expression="output-html"/>
     </xslt>
   </target>
-  <target name="html">
+  <target name="html" depends="style">
     <xslt in="canisius.xml" style="canisius-to-html.xslt" out="output-html/canisius.html"/>
   </target>
   <target name="html-sitemap">
     <xslt in="canisius.xml" style="canisius-to-html-sitemap.xslt" out="output-html/sitemap.xml"/>
+  </target>
+  <target name="style">
+    <copy file="style.css" tofile="output-html/style.css"/>
   </target>
   <target name="html-without-sup">
     <xslt in="canisius.xml" style="canisius-to-html-without-sup.xslt" out="output-html-without-sup/index.html"/>
