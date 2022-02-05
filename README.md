@@ -1,5 +1,7 @@
 # canisius
 
+Live website: [bijbel.gelovenleren.net](https://bijbel.gelovenleren.net)
+
 After cloning, cd into BibleConfiguration and `git submodule update --init`
 
 Katholieke Bijbelvertaling
